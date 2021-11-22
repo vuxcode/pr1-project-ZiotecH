@@ -1,8 +1,12 @@
 # Time Report
 
-> Write about what you have done and how long you have worked on each part of the project.
+#### Progress Report
+Time remaining: 30h - ![100%](https://progress-bar.dev/100)
 
-For example: 
+Estimated completion: ![0%](https://progress-bar.dev/0)
 
-- 2021-10-15 18:00 Worked for 1 hour. I have done:
-  - *List the things you have done.*
+## Monday 22nd November 2021
+
+### 14:00 through 15:30
+    [x] Set up the file structures and added some info to the readme.md
+    [ ] begin working
