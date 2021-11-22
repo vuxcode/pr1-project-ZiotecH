@@ -1,6 +1,12 @@
+:root{
+    --player-one: rgb(74, 118, 184);
+    --player-two: rgb(131, 49, 163);
+}
+
 *{
     font-family: monospace;
 }
+
 
 #ttt-grid-container {
     display:grid;
@@ -16,4 +22,14 @@
 
 .grid-box{
     background-color: darkgray;
+}
+
+.player-one{
+    background-color: var(--player-one);
+    box-shadow: var(--player-one) 0px 0px 2px;
+}
+
+.player-two{
+    background-color: var(--player-two);
+    box-shadow: var(--player-two) 0px 0px 2px;
 }
