@@ -18,7 +18,7 @@ I'm probably going to make a TTT game, and I'm going to focus on:
 
 
 ### Rock Paper Scissors
-Had a quick idea for RPS, will use 5 "elements" which all have to strengths and weaknesses.
+Had a quick idea for RPS, will use 5 "elements" which all have two strengths and weaknesses.
 
 * 2P-mode, easy to implement.
 * 1P-v-AI, trivial to implement.
