@@ -22,8 +22,12 @@ function tileDebug(x,y){
         tile.innerText = "\nIt was pressed by player: "+player;
         tile.classList.add(playerColour[player]);
         tile.classList.add("locked");
-        
-        switchPlayer()
+
+        if(checkVictory()){
+            console.log("Player "+player+" won!")
+        };
+
+        switchPlayer();
     }
 }
 
@@ -36,3 +40,7 @@ gridArray[1][2].addEventListener("click",function(){tileDebug(1,2)});
 gridArray[2][0].addEventListener("click",function(){tileDebug(2,0)});
 gridArray[2][1].addEventListener("click",function(){tileDebug(2,1)});
 gridArray[2][2].addEventListener("click",function(){tileDebug(2,2)});
+
+function checkVictory () {
+    if(true){return true}
+}
