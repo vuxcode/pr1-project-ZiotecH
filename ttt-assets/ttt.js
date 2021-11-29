@@ -22,6 +22,7 @@ var playerColour = ["player-one","player-two"]
 //lazy css class establishment
 
 var turn = 0; //define turn counter (0-indexed)
+var moves = [0,0];
 
 function switchPlayer(){
     if(player == 0){player=1}
@@ -41,14 +42,15 @@ function tileCheck(x,y){
             tile.classList.add(playerColour[player]);
             tile.classList.add("locked");
             pickArray[x][y] = player
-            
+            moves[player]++;
             check = checkVictory();
+            
             console.log(check)
             if(check[1] == (-2)){
                 alert("No victor!")
             }else if(check[0] === true){
                 winner = true;
-                alert("Victory achieved by "+(playerColour[check[1]]).replace("-"," ")+"!");
+                alert("Victory achieved by "+(playerColour[check[1]]).replace("-"," ")+" in "+moves[player]+" moves!");
             }else{
                 switchPlayer();
             }
@@ -69,9 +71,6 @@ gridArray[2][1].addEventListener("click",function(){tileCheck(2,1)});
 gridArray[2][2].addEventListener("click",function(){tileCheck(2,2)});
 
 function checkVictory () {
-    if(turn >= 8){
-        return[false,-2]
-    }
     //Long-ass logic to check each object
     //check line 100 for explanation
     if(checkEquals(pickArray[0][0],pickArray[0][1],pickArray[0][2])){return [true,pickArray[0][0]]}
@@ -81,11 +80,15 @@ function checkVictory () {
     if(checkEquals(pickArray[0][0],pickArray[1][0],pickArray[2][0])){return [true,pickArray[0][0]]}
     if(checkEquals(pickArray[0][1],pickArray[1][1],pickArray[2][1])){return [true,pickArray[0][1]]}
     if(checkEquals(pickArray[0][2],pickArray[1][2],pickArray[2][2])){return [true,pickArray[0][2]]}
-
-    if(checkEquals(pickArray[0][1],pickArray[1][1],pickArray[2][2])){return [true,pickArray[0][0]]}
+    
+    if(checkEquals(pickArray[0][0],pickArray[1][1],pickArray[2][2])){return [true,pickArray[0][0]]}
     if(checkEquals(pickArray[0][2],pickArray[1][1],pickArray[2][0])){return [true,pickArray[0][2]]}
-
-    return [false,-1]
+    
+    if(turn >= 8){
+        return [false,-2]
+    }else{
+        return [false,-1]
+    }
 }
 
 function checkEquals(x,y,z){

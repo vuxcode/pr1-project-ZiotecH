@@ -1,9 +1,9 @@
 # Time Report
 
 #### Progress Report
-Time remaining: 30h - ![100%](https://progress-bar.dev/100)
+Time remaining: 02h 10m - ![92%](https://progress-bar.dev/92)
 
-Estimated completion: ![0%](https://progress-bar.dev/0)
+Estimated completion: ![5%](https://progress-bar.dev/5)
 
 ## Monday 22nd November 2021
 
