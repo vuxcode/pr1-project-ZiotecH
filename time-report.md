@@ -10,3 +10,8 @@ Estimated completion: ![0%](https://progress-bar.dev/0)
 ### 14:00 through 15:30
     [x] Set up the file structures and added some info to the readme.md
     [ ] begin working
+
+## Monday 29th November 2021
+
+### 14:00 through 14:40
+    [x] Finished base logic for TTT, will work on AI soon(tm)

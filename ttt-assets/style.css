@@ -33,3 +33,7 @@
     background-color: var(--player-two);
     box-shadow: var(--player-two) 0px 0px 2px;
 }
+
+.tile{
+    align-content: center;
+}
