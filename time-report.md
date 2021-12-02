@@ -19,3 +19,5 @@ Estimated completion: ![5%](https://progress-bar.dev/5)
 ## Thursday 2nd December 2021
 
 ### 11:00 through 12:30
+    [x] Implement basic(randompick) AI.
+    [x] Start drafting Level 1 AI logic.

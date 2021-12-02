@@ -166,19 +166,20 @@ function AIMakeMove(level){
         case(1): 
             if(!gridArray[1][1].classList.contains("locked")){
                 gridArray[1][1].click()
-            }else{
-                tiles = randomPick();
-                tileX = constrain(tiles[0]);
-                tileY = constrain(tiles[1]);
-                if(
-                       (!gridArray [tileX[0]] [tileY[0]].classList.contains("locked") || gridArray [tileX[0]] [tileY[0]].classList.contains("player-two"))
-                    && (!gridArray [tileX[0]] [tileY[1]].classList.contains("locked") || gridArray [tileX[0]] [tileY[1]].classList.contains("player-two"))
-                    && (!gridArray [tileX[1]] [tileY[0]].classList.contains("locked") || gridArray [tileX[1]] [tileY[0]].classList.contains("player-two"))
-                    && (!gridArray [tileX[1]] [tileY[1]].classList.contains("locked") || gridArray [tileX[1]] [tileY[1]].classList.contains("player-two"))
-                    ){
-                        gridArray[tiles[0]][tiles[1]].click()
-                }
             }
+            tiles = randomPick();
+            tileX = constrain(tiles[0]);
+            tileY = constrain(tiles[1]);
+            if(
+                   ((!gridArray [tileX[0]] [tiles[1]].classList.contains("locked") || gridArray [tileX[0]] [tiles[1]].classList.contains("player-two"))
+                &&  (!gridArray [tileX[1]] [tiles[1]].classList.contains("locked") || gridArray [tileX[1]] [tiles[1]].classList.contains("player-two")))
+                || ((!gridArray [tiles[0]] [tileY[0]].classList.contains("locked") || gridArray [tiles[0]] [tileY[0]].classList.contains("player-two"))
+                &&  (!gridArray [tiles[0]] [tileY[1]].classList.contains("locked") || gridArray [tiles[0]] [tileY[1]].classList.contains("player-two")))
+                ){
+                    gridArray[tiles[0]][tiles[1]].click()
+                }
+            
+            if(player == 1){AIMakeMove(0)}
             break;
         default: 
             while(picked == false){
