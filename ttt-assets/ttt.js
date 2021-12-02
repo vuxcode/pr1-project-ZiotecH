@@ -10,12 +10,13 @@ var gridArray = [
 
 var winner = false;
 
-var pickArray = [
+//define a 2D-array to keep track of who picked what
+const pSafe = [
     [-1,-1,-1],
     [-1,-1,-1],
     [-1,-1,-1]
 ];
-//define a 2D-array to keep track of who picked what
+
 
 var player = 0; //0-indexing
 var playerColour = ["player-one","player-two"]
@@ -23,6 +24,8 @@ var playerColour = ["player-one","player-two"]
 
 var turn = 0; //define turn counter (0-indexed)
 var moves = [0,0];
+var menuBar = document.getElementById("menu-bar")
+resetGame();
 
 function switchPlayer(){
     if(player == 0){player=1}
@@ -47,6 +50,7 @@ function tileCheck(x,y){
             
             console.log(check)
             if(check[1] == (-2)){
+                winner=true;
                 alert("No victor!")
             }else if(check[0] === true){
                 winner = true;
@@ -56,7 +60,8 @@ function tileCheck(x,y){
             }
         }
     }else{
-        console.log("NO")
+        // console.log("NO")
+        resetGame();
     }
 }
 
@@ -74,8 +79,8 @@ function checkVictory () {
     //Long-ass logic to check each object
     //check line 100 for explanation
     if(checkEquals(pickArray[0][0],pickArray[0][1],pickArray[0][2])){return [true,pickArray[0][0]]}
-    if(checkEquals(pickArray[1][0],pickArray[1][1],pickArray[1][2])){return [true,pickArray[1][1]]}
-    if(checkEquals(pickArray[2][0],pickArray[2][1],pickArray[2][2])){return [true,pickArray[1][1]]}
+    if(checkEquals(pickArray[1][0],pickArray[1][1],pickArray[1][2])){return [true,pickArray[1][0]]}
+    if(checkEquals(pickArray[2][0],pickArray[2][1],pickArray[2][2])){return [true,pickArray[2][0]]}
     
     if(checkEquals(pickArray[0][0],pickArray[1][0],pickArray[2][0])){return [true,pickArray[0][0]]}
     if(checkEquals(pickArray[0][1],pickArray[1][1],pickArray[2][1])){return [true,pickArray[0][1]]}
@@ -98,7 +103,19 @@ function checkEquals(x,y,z){
 }
 
 
-
+function resetGame(){
+    pickArray = [[...pSafe[0]],[...pSafe[1]],[...pSafe[2]]];
+    var tmp = document.getElementsByClassName("grid-box");
+    for(var i = 0; i<tmp.length;i++){
+        tmp[i].classList.remove(playerColour[0]);
+        tmp[i].classList.remove(playerColour[1]);
+        tmp[i].classList.remove("locked");
+    }
+    winner=false;
+    turn=0;
+    moves=[0,0];
+    // player = 0;
+}
 
 
 

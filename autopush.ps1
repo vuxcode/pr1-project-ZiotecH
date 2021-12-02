@@ -1,5 +1,6 @@
+git pull
 while($true){
-    $msg = (cat .\autopush)
+    $msg = (Get-Content .\autopush)
     if("" -eq $msg){$msg = "automatic 30 minute push"}
     git add *
     git commit * -m $msg

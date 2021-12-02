@@ -7,17 +7,24 @@
     font-family: monospace;
 }
 
+#menu-bar{
+    width:calc(calc(3 * 250px) + calc(2*5px));
+    text-align: center;
+    vertical-align: center;
+    margin:auto;
+}
 
 #ttt-grid-container {
     display:grid;
     grid-template-columns: repeat(3,1fr);
-    width:calc(calc(3*150px) + calc(2*5px));
-    height:calc(calc(3*150px) + calc(2*5px));
+    width:calc(calc(3 * 250px) + calc(2*5px));
+    height:calc(calc(3 * 250px) + calc(2*5px));
     row-gap: 5px;
     column-gap: 5px;
     text-align: center;
     vertical-align: center;
     background-color: black;
+    margin:auto;
 }
 
 .grid-box{
