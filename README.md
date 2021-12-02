@@ -48,7 +48,7 @@ You can expect a few small games and/or silly implementations of stuff like a ca
 - [ ] user-guide.md
 
 ### TTT
-- [ ] Implement base TTT functions
+- [x] Implement base TTT functions
 - [ ] Prototype AI
 - [ ] Colour selector
 - [ ] Icon set
