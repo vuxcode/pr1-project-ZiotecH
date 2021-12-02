@@ -1,8 +1,23 @@
 # Time Report
 
-> Write about what you have done and how long you have worked on each part of the project.
+#### Progress Report
+Time remaining: 02h 10m - ![92%](https://progress-bar.dev/92)
 
-For example: 
+Estimated completion: ![5%](https://progress-bar.dev/5)
 
-- 2021-10-15 18:00 Worked for 1 hour. I have done:
-  - *List the things you have done.*
+## Monday 22nd November 2021
+
+### 14:00 through 15:30
+    [x] Set up the file structures and added some info to the readme.md
+    [ ] ~begin working~
+
+## Monday 29th November 2021
+
+### 14:00 through 14:40
+    [x] Finished base logic for TTT, will work on AI soon(tm)
+
+## Thursday 2nd December 2021
+
+### 11:00 through 12:30
+    [x] Implement basic(randompick) AI.
+    [x] Start drafting Level 1 AI logic.
