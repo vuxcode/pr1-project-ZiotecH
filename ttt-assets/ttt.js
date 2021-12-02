@@ -9,6 +9,7 @@ var gridArray = [
 //define a 2D-array of tile elements
 
 var winner = false;
+var AIRunning = false;
 
 //define a 2D-array to keep track of who picked what
 const pSafe = [
@@ -24,13 +25,22 @@ var playerColour = ["player-one","player-two"]
 
 var turn = 0; //define turn counter (0-indexed)
 var moves = [0,0];
+var scores = [0,0];
 var menuBar = document.getElementById("menu-bar")
+
+menuBar.children[2].addEventListener("click",toggleAI);
 resetGame();
 
 function switchPlayer(){
+    menuBar.children[1].classList.remove("p"+player+"text")
     if(player == 0){player=1}
     else{player=0}
+    menuBar.children[1].innerText = "Player: "+playerColour[player]
+    menuBar.children[1].classList.add("p"+player+"text")
     turn++;
+    if(AIRunning && player == 1){
+        AIMakeMove()
+    }
 }
 //function to switch between players
 
@@ -50,11 +60,9 @@ function tileCheck(x,y){
             
             console.log(check)
             if(check[1] == (-2)){
-                winner=true;
-                alert("No victor!")
+                setTimeout(function(){gameOver(-1)},10);
             }else if(check[0] === true){
-                winner = true;
-                alert("Victory achieved by "+(playerColour[check[1]]).replace("-"," ")+" in "+moves[player]+" moves!");
+                setTimeout(function(){gameOver(player)},10);
             }else{
                 switchPlayer();
             }
@@ -111,6 +119,7 @@ function resetGame(){
         tmp[i].classList.remove(playerColour[1]);
         tmp[i].classList.remove("locked");
     }
+    menuBar.children[0].innerText="Scores: "+scores[0]+"|"+scores[1];
     winner=false;
     turn=0;
     moves=[0,0];
@@ -118,11 +127,55 @@ function resetGame(){
 }
 
 
+function gameOver(player){
+    if(player != -1){
+        scores[player]++;
+        alert("Victory achieved by "+(playerColour[check[1]]).replace("-"," ")+" in "+moves[player]+" moves!");
+    }
+    else{
+        alert("No victor!")
+        switchPlayer();
+    }
+    resetGame();
+}
 
+function toggleAI(){
+    AIRunning=!AIRunning;
+    if(AIRunning){
+        menuBar.children[2].classList.remove("red");
+        menuBar.children[2].classList.add("green");
+        menuBar.children[2].innerText = "AI: ON"
+    }else{
+        menuBar.children[2].classList.remove("green");
+        menuBar.children[2].classList.add("red");
+        menuBar.children[2].innerText = "AI: OFF"
+    }
+    if(player == 1){
+        AIMakeMove();
+    }
+}
 
+function AIMakeMove(level){
+    picked = false;
+    switch(level){
+        default: 
+            while(picked == false){
+                picks = randomPick();
+                if(!gridArray [ picks[0] ] [picks[1] ].classList.contains("locked")){
+                    gridArray [ picks[0] ] [picks[1] ].click();
+                    picked = true;
+                }else{
+                    picked = false;
+                }
+            }
+    }
+}
 
-
-
+function randomPick(){
+    x = Math.round(Math.random()*2)
+    y = Math.round(Math.random()*2)
+    return [x,y];
+}
 
 
 
