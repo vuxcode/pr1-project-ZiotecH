@@ -10,6 +10,7 @@ var gridArray = [
 
 var winner = false;
 var AIRunning = false;
+var AILevel = 0;
 
 //define a 2D-array to keep track of who picked what
 const pSafe = [
@@ -31,15 +32,15 @@ var menuBar = document.getElementById("menu-bar")
 menuBar.children[2].addEventListener("click",toggleAI);
 resetGame();
 
-function switchPlayer(){
+function switchPlayer(AllowAI){
     menuBar.children[1].classList.remove("p"+player+"text")
     if(player == 0){player=1}
     else{player=0}
     menuBar.children[1].innerText = "Player: "+playerColour[player]
     menuBar.children[1].classList.add("p"+player+"text")
     turn++;
-    if(AIRunning && player == 1){
-        AIMakeMove()
+    if(AIRunning && player == 1 && AllowAI == true){
+        AIMakeMove(AILevel)
     }
 }
 //function to switch between players
@@ -57,14 +58,12 @@ function tileCheck(x,y){
             pickArray[x][y] = player
             moves[player]++;
             check = checkVictory();
-            
-            console.log(check)
             if(check[1] == (-2)){
                 setTimeout(function(){gameOver(-1)},10);
             }else if(check[0] === true){
                 setTimeout(function(){gameOver(player)},10);
             }else{
-                switchPlayer();
+                switchPlayer(true);
             }
         }
     }else{
@@ -111,7 +110,12 @@ function checkEquals(x,y,z){
 }
 
 
-function resetGame(){
+function resetGame(forcePlayer){
+    if(forcePlayer === undefined){
+
+    }else{
+        player = forcePlayer;
+    }
     pickArray = [[...pSafe[0]],[...pSafe[1]],[...pSafe[2]]];
     var tmp = document.getElementsByClassName("grid-box");
     for(var i = 0; i<tmp.length;i++){
@@ -124,6 +128,7 @@ function resetGame(){
     turn=0;
     moves=[0,0];
     // player = 0;
+    if(AIRunning && player == 1){AIMakeMove(AILevel)};
 }
 
 
@@ -134,9 +139,9 @@ function gameOver(player){
     }
     else{
         alert("No victor!")
-        switchPlayer();
+        switchPlayer(false)
     }
-    resetGame();
+    resetGame()
 }
 
 function toggleAI(){
@@ -151,13 +156,30 @@ function toggleAI(){
         menuBar.children[2].innerText = "AI: OFF"
     }
     if(player == 1){
-        AIMakeMove();
+        AIMakeMove(AILevel);
     }
 }
 
 function AIMakeMove(level){
     picked = false;
     switch(level){
+        case(1): 
+            if(!gridArray[1][1].classList.contains("locked")){
+                gridArray[1][1].click()
+            }else{
+                tiles = randomPick();
+                tileX = constrain(tiles[0]);
+                tileY = constrain(tiles[1]);
+                if(
+                       (!gridArray [tileX[0]] [tileY[0]].classList.contains("locked") || gridArray [tileX[0]] [tileY[0]].classList.contains("player-two"))
+                    && (!gridArray [tileX[0]] [tileY[1]].classList.contains("locked") || gridArray [tileX[0]] [tileY[1]].classList.contains("player-two"))
+                    && (!gridArray [tileX[1]] [tileY[0]].classList.contains("locked") || gridArray [tileX[1]] [tileY[0]].classList.contains("player-two"))
+                    && (!gridArray [tileX[1]] [tileY[1]].classList.contains("locked") || gridArray [tileX[1]] [tileY[1]].classList.contains("player-two"))
+                    ){
+                        gridArray[tiles[0]][tiles[1]].click()
+                }
+            }
+            break;
         default: 
             while(picked == false){
                 picks = randomPick();
@@ -168,6 +190,7 @@ function AIMakeMove(level){
                     picked = false;
                 }
             }
+            break;
     }
 }
 
@@ -177,6 +200,21 @@ function randomPick(){
     return [x,y];
 }
 
+
+function constrain(val){
+    tmp = [0,0]
+    if(val+1 <= 2){
+        tmp[0] = val+1;
+    }else{
+        tmp[0] = 0
+    }
+    if(val-1 >= 0){
+        tmp[1] = val-1;
+    }else if(val-1 == -1){
+        tmp[1] = 2
+    }
+    return tmp
+}
 
 
 /*
