@@ -55,6 +55,7 @@ If a player is found victorious, they go on to start the next game.
 A very rudimentary AI has been implemented, however this AI only randomizes a tile to place its piece on.
 This AI can be toggled on by pressing the corresponding text in the top bar.
 The AI always plays as "player-two".
+The game restarts automatically after all tiles have been claimed.
 
 # Progress
 - [x] Intitial draft
@@ -72,7 +73,7 @@ The AI always plays as "player-two".
 - [ ] ~Medium AI~
 - [ ] ~Hard AI~
 - [ ] ~Impossible AI~
-- [ ] user-guide.md entry
+- [x] user-guide.md entry
 
 ## SCRAPPED
 
