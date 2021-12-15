@@ -6,7 +6,7 @@ I'm planning on doing a number of smaller projects, instead of a major one as I 
 The projects will likely be somewhat basic, and they'll be quick ones to just publish and go.
 
 ### TicTacToe
-##### TicTacToe is available here: [TTT]: https://vuxcode.github.io/pr1-project-ZiotecH/ttt.html
+##### TicTacToe is available here: [TTT](https://vuxcode.github.io/pr1-project-ZiotecH/ttt.html)
 I'm probably going to make a TTT game, and I'm going to focus on:
 * 2P mode
 * 1P-v-AI mode
