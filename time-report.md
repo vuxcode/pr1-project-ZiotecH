@@ -1,9 +1,9 @@
 # Time Report
 
 #### Progress Report
-Time remaining: 02h 10m - ![92%](https://progress-bar.dev/92)
+Time remaining: 01d 02h 10m - ![87%](https://progress-bar.dev/87)
 
-Estimated completion: ![5%](https://progress-bar.dev/5)
+Estimated completion: ![12%](https://progress-bar.dev/12)
 
 ## Monday 22nd November 2021
 
@@ -21,3 +21,9 @@ Estimated completion: ![5%](https://progress-bar.dev/5)
 ### 11:00 through 12:30
     [x] Implement basic(randompick) AI.
     [x] Start drafting Level 1 AI logic.
+
+
+## Wednesday 15th December 2021
+
+### 21:50 through 22:00
+    [x] Scrapped remaining parts of the project.
